@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Submit a new slang</h2>
+<hr/>
+<form role="form" method="post">
+  <div class="form-group">
+    <label for="language">This slang is in</label>
+    <select name="language" class="form-control" id="language" placeholder="Password">
+    	<option value="en">English</option>
+    	<option value="ar">Arabic</option>
+    	<option value="ur">Urdu</option>
+    </select>
+  </div>
+  <div class="row">
+  	<div class="col-lg-6">
+	  <div class="form-group">
+	    <label for="local">It's written in <span class="lang_text">Japanese</span> as</label>
+	    <small>*Only required for non English slangs</small>
+	   	<input type="text" class="form-control" id="local" name="local" placeholder="ファック (Fuck in Japanese)">
+	  </div>
+	</div>
+  </div>
+  <div class="form-group">
+    <label for="pronunciation">Pronunciation of <span class="eng_pron">ファック</span> in English can be best written as</label>
+    <small>*Only required for non English slangs</small>
+    <input type="text" class="form-control" name="pronunciation" id="pronunciation" placeholder="Fakku (Pronunciation of ファック)">
+  </div>
+  <div class="form-group">
+    <label for="english">English word for slang:</label>
+    <input type="text" class="form-control" name="english" id="english" placeholder="Fuck">
+  </div>
+  <div class="form-group">
+    <label for="description">Any explanation? Use of English is encouraged</label>
+    <textarea class="form-control" name="description" id="description" rows="5"></textarea>
+  </div>
+  <h4>Examples</h4>
+  <div id="examples">
+	  <div class="form-group">
+	    <label for="example_sentence_1">Sentence in chosen language</label>
+	    <small>*Only required for non English slangs</small>
+	    <input type="text" placeholder="男はねえ、あなたをファック" class="form-control" name="example[][sentence]" id="example_sentence_1"/>
+	  </div>
+	  <div class="form-group">
+	    <label for="example_pronunciation_1">Pronunciation</label>
+	    <small>*Only required for non English slangs</small>
+	    <input type="text" placeholder="Otoko wanē, anata o fakku" class="form-control" name="example[][pronunciation]" id="example_pronunciation_1"/>
+	  </div>
+	  <div class="form-group">
+	    <label for="example_meaning_1">English sentence</label>
+	    <input type="text" placeholder="Hey man, Fuck you" class="form-control" name="example[][meaning]" id="example_meaning_1"/>
+	  </div>
+  </div>
+  <a href="javascript:;">Add More...</a>
+  <hr/>
+  <p class="help-block">We recommend that you register after submission so you can take credit for your submission. Your submission will be reviewed before acceptance. You will be notified by email if you are logged in.</p>
+  <div class="form-group">
+  	<button type="submit" class="btn btn-orange">Submit</button>
+  </div>
+</form>
+{% endblock %}

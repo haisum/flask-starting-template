@@ -1,4 +1,6 @@
-
+"""
+Config file, override as you like! Keep secret key secret
+"""
 class Config(object):
 	DEBUG = False
 	TESTING = False
