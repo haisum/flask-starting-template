@@ -11,20 +11,14 @@
 
 		<title>{% block title %}World Slangs | All slangs of world in one place{% endblock %}</title>
 		
-		<link rel="stylesheet" href="{{ url_for("static", filename="css/bootstrap.min.css") }}" type="text/css" />
-		<link rel="stylesheet" href="{{ url_for("static", filename="css/styles.css") }}" type="text/css" />
+		<link rel="stylesheet" href="{{ url_for("static", filename="vendor/bootstrap/css/magic-bootstrap.css") }}" type="text/css" />
 		{% block styles %}
 		{% endblock %}
-
-		<script type="text/javascript" src="{{ url_for("static", filename="js/jquery-1.10.2.min.js") }}"></script>
-		<script type="text/javascript" src="{{ url_for("static", filename="js/bootstrap.min.js") }}"></script>
-		<script type="text/javascript" src="{{ url_for("static", filename="js/custom.js") }}"></script>
-		{% block javascripts %}
-		{% endblock %}
+		<link rel="stylesheet" href="{{ url_for("static", filename="css/styles.css") }}" type="text/css" />
 	</head>
 
 	<body>
-		 <nav class="navbar navbar-inverse bs-docs-nav" role="navigation">
+		 <nav class="navbar navbar-default" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -39,16 +33,9 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav">
-						<li {% if request.path == "/" %} class="active" {% endif %}><a href="{{ url_for("bp_word.home") }}">Home</a></li>
-						<li {% if request.path == "/add" %} class="active" {% endif %}><a href="{{ url_for("bp_word.show_add_form") }}">Add Slang</a></li>
-						<li class="dropdown">
-			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
-			        <ul class="dropdown-menu">
-			          <li><a href="#">Facebook</a></li>
-			          <li><a href="#">Google</a></li>
-			          <li><a href="#">Twitter</a></li>
-			        </ul>
-			      </li>
+						<li {% if reverse_url_map(request.path) == "bp_word.home" %} class="active" {% endif %}><a href="{{ url_for("bp_word.home") }}">Home</a></li>
+						<li {% if reverse_url_map(request.path) == "bp_word.show_add_form" %} class="active" {% endif %}><a href="{{ url_for("bp_word.show_add_form") }}">Add Slang</a></li>
+						<li {% if reverse_url_map(request.path) == "bp_user.login" %} class="active" {% endif %}><a href="{{ url_for("bp_user.login") }}">Login</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container -->
@@ -69,10 +56,19 @@
 			<footer>
 				<div class="row">
 					<div class="col-lg-12">
-						<p>Copyright &copy; Haisum {{today().year}}</p>
+						<!-- <p>Copyright &copy; Haisum {{today().year}}</p> -->
 					</div>
 				</div>
 			</footer>
 		</div><!-- /.container -->
+		
+
+		<script type="text/javascript" src="{{ url_for("static", filename="vendor/jquery-1.10.2.min.js") }}"></script>
+		<script type="text/javascript" src="{{ url_for("static", filename="vendor/bootstrap/js/bootstrap.min.js") }}"></script>
+
+		{% block javascripts %}
+		{% endblock %}
+		
+		<script type="text/javascript" src="{{ url_for("static", filename="js/custom.js") }}"></script>
 	</body>
 </html>
